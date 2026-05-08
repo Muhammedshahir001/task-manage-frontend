@@ -1,5 +1,5 @@
 import { createContext, useState, useContext, useCallback } from 'react';
-import axios from 'axios';
+import api from '../api/axios';
 import { useAuth } from './AuthContext';
 import { useNotifications } from './NotificationContext';
 
@@ -24,7 +24,7 @@ export const TaskProvider = ({ children }) => {
     if (!user) return;
     setLoading(true);
     try {
-      const response = await axios.get('/api/tasks', getAxiosConfig());
+      const response = await api.get('/tasks', getAxiosConfig());
       setTasks(response.data);
     } catch (error) {
       console.error('Error fetching tasks:', error);
@@ -34,20 +34,20 @@ export const TaskProvider = ({ children }) => {
   }, [user]);
 
   const addTask = async (taskData) => {
-    const response = await axios.post('/api/tasks', taskData, getAxiosConfig());
+    const response = await api.post('/tasks', taskData, getAxiosConfig());
     setTasks((prev) => [response.data, ...prev]);
     addNotification(`New task added: "${response.data.title}"`);
     return response.data;
   };
 
   const updateTask = async (id, taskData) => {
-    const response = await axios.put(`/api/tasks/${id}`, taskData, getAxiosConfig());
+    const response = await api.put(`/tasks/${id}`, taskData, getAxiosConfig());
     setTasks((prev) => prev.map((t) => (t._id === id ? response.data : t)));
     return response.data;
   };
 
   const deleteTask = async (id) => {
-    await axios.delete(`/api/tasks/${id}`, getAxiosConfig());
+    await api.delete(`/tasks/${id}`, getAxiosConfig());
     setTasks((prev) => prev.filter((t) => t._id !== id));
   };
 
