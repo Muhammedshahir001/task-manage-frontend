@@ -91,23 +91,23 @@ const Login = () => {
             </button>
           </form>
 
-          <div className="relative my-8">
+          {/* <div className="relative my-8">
             <div className="absolute inset-0 flex items-center">
               <div className="w-full border-t border-white/5"></div>
             </div>
             <div className="relative flex justify-center text-xs uppercase">
               <span className="bg-dark-lighter px-2 text-slate-500">Or continue with</span>
             </div>
-          </div>
+          </div> */}
 
-          <div className="grid grid-cols-2 gap-4">
+          {/* <div className="grid grid-cols-2 gap-4">
             <button className="flex items-center justify-center gap-2 bg-white/5 border border-white/10 py-2.5 rounded-xl text-sm font-medium hover:bg-white/10 transition-colors">
               <Chrome size={18} /> Google
             </button>
             <button className="flex items-center justify-center gap-2 bg-white/5 border border-white/10 py-2.5 rounded-xl text-sm font-medium hover:bg-white/10 transition-colors">
               <Github size={18} /> Github
             </button>
-          </div>
+          </div> */}
         </GlassCard>
 
         <p className="text-center text-slate-400 mt-8">
